@@ -8,12 +8,11 @@
 #include "moveRobot.h"
 
 void initPinOuts() {
-	P1DIR |= BIT2;
-	P1SEL |= BIT2;
+	P1DIR |= (BIT1 | BIT2);
+	P1SEL |= (BIT1 | BIT2);
 
-	P1DIR |= BIT1;
-	P2DIR |= BIT0;
-	P2DIR |= BIT1;
+	P2DIR |= (BIT0 | BIT1);
+	P2SEL |= (BIT0 | BIT1);
 }
 
 void timersConfig() {
@@ -26,13 +25,11 @@ void timersConfig() {
 	TA0CTL |= TASSEL1;
 	TA1CTL |= TASSEL1;
 
-	TA0CCR0 = 100;   			 // set signal period to 100 clock cycles (~100 microseconds)
+	TA0CCR0 = 100;  // set signal period to 100 clock cycles (~100 microseconds)
 	TA0CCR1 = 0;
 
-	TA1CCR0 = 100;				 // set signal period to 100 clock cycles (~100 microseconds)
+	TA1CCR0 = 100;	// set signal period to 100 clock cycles (~100 microseconds)
 	TA1CCR1 = 0;
-	TA1CCR2 = 0;
-
 
 	TA0CCTL1 |= OUTMOD_7;
 	TA1CCTL1 |= OUTMOD_7;        // set TACCTL1 to Reset / Set mode
@@ -42,19 +39,23 @@ void timersConfig() {
 }
 
 void leftMotorForward() {
-
+	TA0CCR0 = 0;
+	TA0CCR1 = 60;
 }
 
 void leftMotorBackward() {
-
+	TA0CCR0 = 100;
+	TA0CCR1 = 0;
 }
 
 void rightMotorForward() {
-
+	TA1CCR0 = 0;
+	TA1CCR1 = 60;
 }
 
 void rightMotorBackward() {
-
+	TA1CCR0 = 100;
+	TA1CCR1 = 0;
 }
 
 void leftTurn() {
@@ -73,6 +74,6 @@ void moveForward() {
 }
 
 void moveBackward() {
-	leftMotorBackward();
-	rightMotorBackward();
+	TA0CCR0 = 60;
+	TA1CCR0 = 60;
 }
