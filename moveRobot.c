@@ -4,7 +4,7 @@
  *  Created on: Nov 19, 2013
  *      Author: C15Ryan.Turner
  */
-
+#include "msp430.h"
 #include "moveRobot.h"
 
 void initPinOuts() {
@@ -44,7 +44,7 @@ void leftMotorForward() {
 }
 
 void leftMotorBackward() {
-	TA0CCR0 = 100;
+	TA0CCR0 = 60;
 	TA0CCR1 = 0;
 }
 
@@ -54,7 +54,7 @@ void rightMotorForward() {
 }
 
 void rightMotorBackward() {
-	TA1CCR0 = 100;
+	TA1CCR0 = 60;
 	TA1CCR1 = 0;
 }
 
@@ -74,6 +74,6 @@ void moveForward() {
 }
 
 void moveBackward() {
-	TA0CCR0 = 60;
-	TA1CCR0 = 60;
+	leftMotorBackward();
+	rightMotorBackward();
 }

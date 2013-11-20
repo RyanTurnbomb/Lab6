@@ -4,24 +4,22 @@
 /*
  * main.c
  */
+
+char timer = 0;
+
 int main(void) {
-    WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
-	
-    initPinOuts();
+	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
-    timersConfig();
+	initPinOuts();
+	timersConfig();
 
-    leftTurn();
+	while (1) {
 
-    rightTurn();
+		moveForward();
 
-    moveForward();
-
-    moveBackward();
-
-    while(1){
-
-    }
+	}
 
 	return 0;
 }
+
+
