@@ -8,7 +8,24 @@
 #ifndef MOVEROBOT_H_
 #define MOVEROBOT_H_
 
+void initPinOuts();
 
+void timersConfig();
 
+void leftMotorForward();
+
+void leftMotorBackward();
+
+void rightMotorForward();
+
+void rightMotorBackward();
+
+void leftTurn();
+
+void rightTurn();
+
+void moveForward();
+
+void moveBackward();
 
 #endif /* MOVEROBOT_H_ */
