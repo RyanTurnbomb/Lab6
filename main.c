@@ -5,8 +5,6 @@
  * main.c
  */
 
-char timer = 0;
-
 int main(void) {
 	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
@@ -15,11 +13,21 @@ int main(void) {
 
 	while (1) {
 
+		leftTurn();
+		__delay_cycles(500000);
+		rightTurn();
+		__delay_cycles(500000);
 		moveForward();
+		__delay_cycles(2500000);
+		moveBackward();
+		__delay_cycles(2500000);
+		leftTurn();
+		__delay_cycles(1000000);
+		rightTurn();
+		__delay_cycles(1000000);
 
 	}
 
 	return 0;
 }
-
 

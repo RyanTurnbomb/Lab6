@@ -28,4 +28,6 @@ void moveForward();
 
 void moveBackward();
 
+void pause();
+
 #endif /* MOVEROBOT_H_ */
